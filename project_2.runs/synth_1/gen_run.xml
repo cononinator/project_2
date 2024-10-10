@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7k70tfbv676-1" LaunchTime="1728559617" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/JTAG_TAP_CONTROLLER.dcp">
   <File Type="PA-TCL" Name="JTAG_TAP_CONTROLLER.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="JTAG_TAP_CONTROLLER_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="JTAG_TAP_CONTROLLER_reports.tcl"/>
   <File Type="RDS-RDS" Name="JTAG_TAP_CONTROLLER.vds"/>
   <File Type="RDS-UTIL" Name="JTAG_TAP_CONTROLLER_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="JTAG_TAP_CONTROLLER_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="JTAG_TAP_CONTROLLER.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="JTAG_TAP_CONTROLLER_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="JTAG_TAP_CONTROLLER_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/JTAG_TAP.vhd">
@@ -44,9 +41,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

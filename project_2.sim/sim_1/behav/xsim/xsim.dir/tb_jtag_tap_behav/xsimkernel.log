@@ -1,4 +1,7 @@
-Running: xsim.dir/tb_jtag_tap_behav/xsimk.exe -simmode gui -wdb tb_jtag_tap_behav.wdb -simrunnum 0 -socket 58659
+Running: xsim.dir/tb_jtag_tap_behav/xsimk.exe -simmode gui -wdb tb_jtag_tap_behav.wdb -simrunnum 0 -socket 65523
 Design successfully loaded
-Design Loading Memory Usage: 8372 KB (Peak: 8372 KB)
-Design Loading CPU Usage: 0 ms
+Design Loading Memory Usage: 7676 KB (Peak: 7676 KB)
+Design Loading CPU Usage: 46 ms
+Simulation completed
+Simulation Memory Usage: 8120 KB (Peak: 8120 KB)
+Simulation CPU Usage: 46 ms

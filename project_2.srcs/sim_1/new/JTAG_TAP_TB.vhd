@@ -106,6 +106,44 @@ begin
         expected_state := CDR;
         assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected CDR state" severity error;
 
+
+        -- Move to 'SHIFT-DR' state
+        TMS <= '0';  -- From CAPTURE-DR to SDR-SHIFT
+        wait for 2*TCK_PERIOD;
+        expected_state := SDR_SHIFT;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR_SHIFT state" severity error;
+
+
+        -- Move to 'EXIT1-DR' state
+        TMS <= '1';
+        wait for TCK_PERIOD;
+        expected_state := E1DR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR_SHIFT state" severity error;
+
+        -- Move to PDR state
+        TMS <= '0';
+        wait for 2*TCK_PERIOD;
+        expected_state := PDR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected PDR state" severity error;
+
+        -- Move to 'Exit2-DR' state
+        TMS <= '1';
+        wait for TCK_PERIOD;
+        expected_state := E2DR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected E2DR state" severity error;
+
+        -- Move to 'Update-DR' state
+        TMS <= '1';  -- From Exit2-DR to Update-DR
+        wait for TCK_PERIOD;
+        expected_state := UDR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected UDR state" severity error;
+
+        -- Return back to 'Capture-DR' state
+        TMS <= '1';  -- From Update-DR to Shift-DR
+        wait for TCK_PERIOD;
+        TMS<= '0';
+        wait for TCK_PERIOD;       
+
         -- Move to 'Exit 1-DR' state
         TMS <= '1';  -- From Capture-DR to Exit 1-DR
         wait for TCK_PERIOD;
@@ -154,23 +192,11 @@ begin
         expected_state := RTI;
         assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected RTI state" severity error;
 
-        -- Move to 'Select-DR-Scan' state
-        TMS <= '1';  -- From Run-Test/Idle to Select-DR-Scan
-        wait for TCK_PERIOD;
-        expected_state := SDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR state" severity error;
-
-        -- Move to 'Capture-DR' state
-        TMS <= '0';  -- From Select-DR-Scan to Capture-DR
-        wait for TCK_PERIOD;
-        expected_state := CDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected CDR state" severity error;
-
-        -- Move to 'Shift-DR' state
-        TMS <= '0';  -- From Capture-DR to Shift-DR
-        wait for TCK_PERIOD;
-        expected_state := SDR_SHIFT;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR_SHIFT state" severity error;
+        -- Move to 'Test-Logic-Reset' state
+        TMS <= '1';
+        wait for 3*TCK_PERIOD;
+        expected_state := TLR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected TLR state" severity error;
 
 
         wait;
