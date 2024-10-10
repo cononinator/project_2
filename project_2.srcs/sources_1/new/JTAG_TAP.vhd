@@ -263,6 +263,7 @@ architecture Behavioral of JTAG_TAP_CONTROLLER is
                 when CDR =>
                     TDO <= '0';
                     curr_local_dr_reg <= next_local_dr_reg;
+                    next_local_dr_reg <= X"00000000";
 
                 when TLR =>
                     TDO <= '0';

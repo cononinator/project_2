@@ -17,8 +17,8 @@ architecture behavior of tb_jtag_tap is
     signal TDI   : std_logic := '0';
     signal TDO   : std_logic;
     signal RST  : std_logic := '1';  -- Test reset
-    signal input_data : std_logic_vector(31 downto 0) := X"DEADBEEF";
-    signal output_data : std_logic_vector(31 downto 0);
+    signal input_data : std_logic_vector(31 downto 0) := X"FFFFFFFF";
+    signal output_data : std_logic_vector(31 downto 0) ;
 
     signal STATE_OUT : std_logic_vector (3 downto 0);
 
@@ -79,6 +79,7 @@ begin
     test_process: process
    variable expected_state : STATE_TYPE;
     begin
+        wait for TCK_PERIOD;
         -- Reset the TAP controller
         RST <= '1';
         wait for 3 * TCK_PERIOD;
@@ -86,21 +87,28 @@ begin
 
 
         -- Go to state SDR_SFIFT
-        TMS <= '1';  -- From TLR to RTI
+        TMS <= '0';  -- From TLR to RTI
         wait for TCK_PERIOD;
         expected_state := RTI;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected RTI state" severity error;
         
         -- Move to 'Select-DR-Scan' state
         TMS <= '1';  -- From Run-Test/Idle to Select-DR-Scan
         wait for TCK_PERIOD;
+        expected_state := SDR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR state" severity error;
 
         -- Move to 'Capture-DR' state
         TMS <= '0';  -- From Select-DR-Scan to Capture-DR
         wait for TCK_PERIOD;
+        expected_state := CDR;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected CDR state" severity error;
 
         -- Move to 'Shift-DR' state
         TMS <= '0';  -- From Capture-DR to Shift-DR
         wait for TCK_PERIOD;
+        expected_state := SDR_SHIFT;
+        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR_SHIFT state" severity error;
         
 
         -- Test data shifting

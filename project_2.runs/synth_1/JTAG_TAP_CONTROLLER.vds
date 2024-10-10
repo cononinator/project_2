@@ -1,0 +1,323 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu Oct 10 18:31:19 2024
+# Process ID: 14612
+# Current directory: E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1
+# Command line: vivado.exe -log JTAG_TAP_CONTROLLER.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source JTAG_TAP_CONTROLLER.tcl
+# Log file: E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1/JTAG_TAP_CONTROLLER.vds
+# Journal file: E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-F05BUDQ
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :AMD Ryzen 5 3600X 6-Core Processor             
+# CPU Frequency     :3793 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :34308 MB
+# Swap memory       :5100 MB
+# Total Virtual     :39408 MB
+# Available Virtual :17953 MB
+#-----------------------------------------------------------
+source JTAG_TAP_CONTROLLER.tcl -notrace
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 501.008 ; gain = 198.809
+Command: read_checkpoint -auto_incremental -incremental E:/Documents/Engineering/SOC1/project_2/project_2.srcs/utils_1/imports/synth_1/JTAG_TAP_CONTROLLER.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from E:/Documents/Engineering/SOC1/project_2/project_2.srcs/utils_1/imports/synth_1/JTAG_TAP_CONTROLLER.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top JTAG_TAP_CONTROLLER -part xc7k70tfbv676-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7k70t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k70t'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7752
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 963.258 ; gain = 450.309
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'JTAG_TAP_CONTROLLER' [E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd:49]
+INFO: [Synth 8-226] default block is never used [E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd:109]
+INFO: [Synth 8-256] done synthesizing module 'JTAG_TAP_CONTROLLER' (0#1) [E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd:49]
+WARNING: [Synth 8-3848] Net IR_OUT in module/entity JTAG_TAP_CONTROLLER does not have driver. [E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd:41]
+WARNING: [Synth 8-3848] Net DR_OUT in module/entity JTAG_TAP_CONTROLLER does not have driver. [E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd:42]
+WARNING: [Synth 8-7129] Port IR_OUT[7] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[6] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[5] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[4] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[3] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[2] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[1] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[0] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[31] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[30] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[29] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[28] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[27] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[26] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[25] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[24] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[23] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[22] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[21] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[20] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[19] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[18] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[17] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[16] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[15] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[14] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[13] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[12] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[11] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[10] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[9] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[8] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[7] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[6] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[5] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[4] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[3] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[2] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[1] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[0] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1072.301 ; gain = 559.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1072.301 ; gain = 559.352
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7k70tfbv676-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1072.301 ; gain = 559.352
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7k70tfbv676-1
+INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'JTAG_TAP_CONTROLLER'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                     tlr |                             0000 |                             0000
+                     rti |                             0001 |                             0001
+                     sdr |                             0010 |                             0010
+                     sir |                             0011 |                             1001
+                     cir |                             0100 |                             1010
+               sir_shift |                             0101 |                             1011
+                    e1ir |                             0110 |                             1100
+                     pir |                             0111 |                             1101
+                    e2ir |                             1000 |                             1110
+                     uir |                             1001 |                             1111
+                     cdr |                             1010 |                             0011
+               sdr_shift |                             1011 |                             0100
+                    e1dr |                             1100 |                             0101
+                     pdr |                             1101 |                             0110
+                    e2dr |                             1110 |                             0111
+                     udr |                             1111 |                             1000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'JTAG_TAP_CONTROLLER'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1072.301 ; gain = 559.352
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   5 Input   32 Bit        Muxes := 2     
+	   4 Input   32 Bit        Muxes := 1     
+	  16 Input    4 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 16    
+	   2 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+INFO: [Device 21-9227] Part: xc7k70tfbv676-1 does not have CEAM library.
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port IR_OUT[7] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[6] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[5] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[4] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[3] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[2] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[1] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port IR_OUT[0] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[31] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[30] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[29] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[28] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[27] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[26] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[25] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[24] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[23] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[22] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[21] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[20] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[19] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[18] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[17] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[16] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[15] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[14] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[13] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[12] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[11] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[10] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[9] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[8] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[7] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[6] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[5] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[4] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[3] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[2] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[1] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+WARNING: [Synth 8-7129] Port DR_OUT[0] in module JTAG_TAP_CONTROLLER is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |     8|
+|3     |LUT1   |    32|
+|4     |LUT2   |     6|
+|5     |LUT3   |     3|
+|6     |LUT4   |    12|
+|7     |LUT5   |    42|
+|8     |LUT6   |    50|
+|9     |FDCE   |     4|
+|10    |FDRE   |    76|
+|11    |FDSE   |    21|
+|12    |IBUF   |     4|
+|13    |OBUF   |     5|
+|14    |OBUFT  |    40|
++------+-------+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |   304|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 83 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 1262.648 ; gain = 749.699
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1268.480 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1367.469 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: da620bf7
+INFO: [Common 17-83] Releasing license: Synthesis
+22 Infos, 83 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 1367.469 ; gain = 861.824
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1367.469 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1/JTAG_TAP_CONTROLLER.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file JTAG_TAP_CONTROLLER_utilization_synth.rpt -pb JTAG_TAP_CONTROLLER_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 10 18:31:49 2024...

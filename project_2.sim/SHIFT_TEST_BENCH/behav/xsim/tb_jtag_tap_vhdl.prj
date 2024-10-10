@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_2.srcs/sources_1/new/JTAG_TAP.vhd" \
+"../../../../project_2.srcs/SHIFT_TEST_BENCH/new/JTAG_TB_SHIFT.vhd" \
+
+# Do not sort compile order
+nosort

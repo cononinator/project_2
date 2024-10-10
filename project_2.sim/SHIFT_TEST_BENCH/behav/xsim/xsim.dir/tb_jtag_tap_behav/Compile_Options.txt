@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "tb_jtag_tap_behav" "xil_defaultlib.tb_jtag_tap" -log "elaborate.log" 

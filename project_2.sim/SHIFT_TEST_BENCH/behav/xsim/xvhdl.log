@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'JTAG_TAP_CONTROLLER'
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/Documents/Engineering/SOC1/project_2/project_2.srcs/SHIFT_TEST_BENCH/new/JTAG_TB_SHIFT.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'tb_jtag_tap'
