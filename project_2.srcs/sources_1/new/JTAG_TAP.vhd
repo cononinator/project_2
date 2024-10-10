@@ -256,17 +256,21 @@ architecture Behavioral of JTAG_TAP_CONTROLLER is
                     next_local_dr_reg(counter) <= TDI;
                 
                 when UDR =>
+                    TDO <= '0';
                     null; -- Per Spec next_local_dr_reg should be updated here
                           -- This would require an extra register to store the value of next_local_dr_reg
                 
                 when CDR =>
+                    TDO <= '0';
                     curr_local_dr_reg <= next_local_dr_reg;
 
                 when TLR =>
+                    TDO <= '0';
                     next_local_dr_reg <= X"C0FFEE00";
                     curr_local_dr_reg <= X"C0FFEE00";
                 
                 when others =>
+                    TDO <= '0';
                     null;
                 
             end case;

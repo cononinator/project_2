@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_jtag_tap_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_jtag_tap" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,000.001 ns"></ZoomEndTime>
+      <Cursor1Time time="190.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="116"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject fp_name="/tb_jtag_tap/TCK" type="logic">
+      <obj_property name="ElementShortName">TCK</obj_property>
+      <obj_property name="ObjectShortName">TCK</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/TMS" type="logic">
+      <obj_property name="ElementShortName">TMS</obj_property>
+      <obj_property name="ObjectShortName">TMS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/TDI" type="logic">
+      <obj_property name="ElementShortName">TDI</obj_property>
+      <obj_property name="ObjectShortName">TDI</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/TDO" type="logic">
+      <obj_property name="ElementShortName">TDO</obj_property>
+      <obj_property name="ObjectShortName">TDO</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/RST" type="logic">
+      <obj_property name="ElementShortName">RST</obj_property>
+      <obj_property name="ObjectShortName">RST</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/input_data" type="array">
+      <obj_property name="ElementShortName">input_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">input_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/output_data" type="array">
+      <obj_property name="ElementShortName">output_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">output_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/STATE_OUT" type="array">
+      <obj_property name="ElementShortName">STATE_OUT[3:0]</obj_property>
+      <obj_property name="ObjectShortName">STATE_OUT[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/TCK_PERIOD" type="other">
+      <obj_property name="ElementShortName">TCK_PERIOD</obj_property>
+      <obj_property name="ObjectShortName">TCK_PERIOD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/uut/STATE" type="other">
+      <obj_property name="ElementShortName">STATE</obj_property>
+      <obj_property name="ObjectShortName">STATE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/uut/next_local_dr_reg" type="array">
+      <obj_property name="ElementShortName">next_local_dr_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">next_local_dr_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_jtag_tap/uut/curr_local_dr_reg" type="array">
+      <obj_property name="ElementShortName">curr_local_dr_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_local_dr_reg[31:0]</obj_property>
+   </wvobject>
+</wave_config>

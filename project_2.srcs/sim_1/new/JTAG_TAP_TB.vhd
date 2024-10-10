@@ -198,7 +198,6 @@ begin
         expected_state := TLR;
         assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected TLR state" severity error;
 
-
         wait;
     end process;
 
