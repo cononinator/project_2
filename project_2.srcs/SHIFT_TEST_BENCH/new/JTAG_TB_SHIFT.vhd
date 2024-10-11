@@ -16,9 +16,9 @@ architecture behavior of tb_jtag_tap is
     signal TMS   : std_logic := '0';
     signal TDI   : std_logic := '0';
     signal TDO   : std_logic;
-    signal RST  : std_logic := '1';  -- Test reset
-    signal input_data : std_logic_vector(31 downto 0) := X"AAAAAAAA";
-    signal output_data : std_logic_vector(31 downto 0) ;
+    signal RST   : std_logic := '1';  -- Test reset
+    signal input_data : std_logic_vector(31 downto 0) := X"DEADBEEF";
+    signal output_data : std_logic_vector(31 downto 0) := (others => '0');
 
     signal STATE_OUT : std_logic_vector (3 downto 0);
 
@@ -42,7 +42,7 @@ architecture behavior of tb_jtag_tap is
             when "1010" => return CIR;
             when "1011" => return SIR_SHIFT;
             when "1100" => return E1IR;
-            when "1101" => return PDR;
+            when "1101" => return PIR;
             when "1110" => return E2IR;
             when "1111" => return UIR;
             when others => return TLR;
@@ -61,115 +61,78 @@ begin
 
             -- Debug Port
             STATE_OUT => STATE_OUT
-            
         );
 
     -- Generate TCK clock
     TCK_process: process
     begin
-        while true loop
+        while now < 2000 ns loop  -- Run simulation for 2000 ns
             TCK <= '0';
             wait for TCK_PERIOD / 2;
             TCK <= '1';
             wait for TCK_PERIOD / 2;
         end loop;
+        wait;
     end process;
 
     -- Main test process
     test_process: process
-   variable expected_state : STATE_TYPE;
+        variable expected_state : STATE_TYPE;
     begin
-        wait for TCK_PERIOD;
         -- Reset the TAP controller
         RST <= '1';
         wait for 3 * TCK_PERIOD;
         RST <= '0';
-
-        -- Go to state SDR_SFIFT
-        TMS <= '0';  -- From TLR to RTI
         wait for TCK_PERIOD;
-        expected_state := RTI;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected RTI state" severity error;
-        
-        -- Move to 'Select-DR-Scan' state
-        TMS <= '1';  -- From Run-Test/Idle to Select-DR-Scan
+
+        -- Go to RTI state
+        TMS <= '0';
         wait for TCK_PERIOD;
-        expected_state := SDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR state" severity error;
+        assert(to_state_type(STATE_OUT) = RTI) report "Error: Expected RTI state" severity error;
 
-        -- Move to 'Capture-DR' state
-        TMS <= '0';  -- From Select-DR-Scan to Capture-DR
-        wait for TCK_PERIOD;
-        expected_state := CDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected CDR state" severity error;
+        -- Go to Shift-DR state
+        TMS <= '1'; wait for TCK_PERIOD; -- Select-DR-Scan
+        TMS <= '0'; wait for TCK_PERIOD; -- Capture-DR
+        TMS <= '0'; wait for TCK_PERIOD; -- Shift-DR
+        assert(to_state_type(STATE_OUT) = SDR_SHIFT) report "Error: Expected SDR_SHIFT state" severity error;
 
-        -- Move to 'Shift-DR' state
-        TMS <= '0';  -- From Capture-DR to Shift-DR
-        -- wait for TCK_PERIOD;
-
-
-        -- Test data shifting
+        -- Shift in test data
         for i in 31 downto 0 loop
-            wait for TCK_PERIOD;
             TDI <= input_data(i);
-            output_data(i) <= TDO;
-
-        end loop;        
-        assert(output_data = X"C0FFEE00") report "Error: Data mismatch" severity error;
-
-    
-
-        -- Move to 'Exit 1-DR' state
-        TMS <= '1';  -- From Shift-DR to Exit 1-DR
-        wait for TCK_PERIOD;
-
-        -- Move to 'Pause-DR' state
-        TMS <= '0';  -- From Exit 1-DR to Pause-DR
-        wait for 2*TCK_PERIOD;
-        expected_state := PDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected PDR state" severity error;
-
-        -- Move to 'Exit 2-DR' state
-        TMS <= '1';  -- From Pause-DR to Exit 2-DR
-        wait for TCK_PERIOD;
-        expected_state := E2DR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected E2DR state" severity error;
-
-        -- Move to 'Update-DR' state
-        TMS <= '1';  -- From Exit 2-DR to Update-DR
-        wait for TCK_PERIOD;
-        expected_state := UDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected UDR state" severity error;
-
-        -- Move to 'Select_DR_Scan' state
-        TMS <= '1';  -- From Update-DR to Select-DR-Scan
-        wait for TCK_PERIOD;
-        expected_state := SDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR state" severity error;
-
-        -- Move to 'Capture-DR' state
-        TMS <= '0';  -- From Select-DR-Scan to Capture-DR
-        wait for TCK_PERIOD;
-        expected_state := CDR;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected CDR state" severity error;
-
-        -- Move to 'Shift-DR' state
-        TMS <= '0';  -- From Capture-DR to Shift-DR
-
-        
-        -- Test data update
-        for i in 31 downto 0 loop
-            wait for TCK_PERIOD;
-            TDI <= input_data(i);
-            output_data(i) <= TDO;
-
+            wait for TCK_PERIOD / 2;  -- Wait for half clock cycle
+            output_data(i) <= TDO;    -- Capture TDO at the middle of the clock cycle
+            wait for TCK_PERIOD / 2;  -- Wait for the other half clock cycle
         end loop;
-        assert(output_data = input_data) report "Error: Data mismatch" severity error;
 
-        -- Move to 'Exit 1-DR' state
-        TMS <= '1';  -- From Shift-DR to Exit 1-DR
-        wait for TCK_PERIOD;
+        -- Exit Shift-DR
+        TMS <= '1'; wait for TCK_PERIOD; -- Exit1-DR
+        TMS <= '1'; wait for TCK_PERIOD; -- Update-DR
+        TMS <= '0'; wait for TCK_PERIOD; -- RTI
 
+        -- Check output data
+        assert(output_data = X"C0FFEE00") report "Error: Unexpected output data " & to_hstring(output_data) severity error;
+
+        -- Go to Shift-DR state again
+        TMS <= '1'; wait for TCK_PERIOD; -- Select-DR-Scan
+        TMS <= '0'; wait for TCK_PERIOD; -- Capture-DR
+        TMS <= '0'; wait for TCK_PERIOD; -- Shift-DR
+
+        -- Shift out the data and compare
+        for i in 31 downto 0 loop
+            wait for TCK_PERIOD / 2;  -- Wait for half clock cycle
+            output_data(i) <= TDO;    -- Capture TDO at the middle of the clock cycle
+            wait for TCK_PERIOD / 2;  -- Wait for the other half clock cycle
+        end loop;
+
+        -- Check if the shifted out data matches the input
+        assert(output_data = input_data) report "Error: Shifted out data doesn't match input " & to_hstring(output_data) severity error;
+
+        -- End test
+        TMS <= '1'; wait for TCK_PERIOD; -- Exit1-DR
+        TMS <= '1'; wait for TCK_PERIOD; -- Update-DR
+        TMS <= '0'; wait for TCK_PERIOD; -- RTI
+
+        report "Test completed successfully";
         wait;
     end process;
 

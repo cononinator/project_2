@@ -249,30 +249,32 @@ architecture Behavioral of JTAG_TAP_CONTROLLER is
         if RST = '1' then
             curr_local_dr_reg <= X"C0FFEE00";
         end if;
-        case STATE is
-            when SDR_SHIFT =>
-                TDO <= curr_local_dr_reg(counter);
-                next_local_dr_reg(counter) <= TDI;
-            
-            when UDR =>
-                TDO <= '0';
-                null; -- Per Spec next_local_dr_reg should be updated here
-                        -- This would require an extra register to store the value of next_local_dr_reg
-            
-            when CDR =>
-                TDO <= '0';
-                curr_local_dr_reg <= next_local_dr_reg;
+        if rising_edge(TCK) then
+            case STATE is
+                when SDR_SHIFT =>
+                    next_local_dr_reg <= next_local_dr_reg((DATA_SIZE - 1)  downto 0) & TDI;
+                when UDR =>
+                    TDO <= '0';
+                    null; -- Per Spec next_local_dr_reg should be updated here
+                            -- This would require an extra register to store the value of next_local_dr_reg
+                
+                when CDR =>
+                    TDO <= '0';
+                    curr_local_dr_reg <= next_local_dr_reg;
 
-            when TLR =>
-                TDO <= '0';
-                next_local_dr_reg <= X"C0FFEE00";
-                curr_local_dr_reg <= X"C0FFEE00";
-            
-            when others =>
-                TDO <= '0';
-                null;
-            
-        end case;
+                when TLR =>
+                    TDO <= '0';
+                    next_local_dr_reg <= X"C0FFEE00";
+                    curr_local_dr_reg <= X"C0FFEE00";
+                
+                when others =>
+                    TDO <= '0';
+                    null;
+            end case;
+        end if;
+        if falling_edge(TCK) & STATE = SDR_SHIFT then
+                    TDO <= curr_local_dr_reg(counter);
+        end if;
     end process;
 
     -- DEBUG PROCESS For STATE_OUT
