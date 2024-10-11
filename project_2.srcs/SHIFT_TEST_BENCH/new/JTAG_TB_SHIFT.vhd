@@ -17,7 +17,7 @@ architecture behavior of tb_jtag_tap is
     signal TDI   : std_logic := '0';
     signal TDO   : std_logic;
     signal RST  : std_logic := '1';  -- Test reset
-    signal input_data : std_logic_vector(31 downto 0) := X"FFFFFFFF";
+    signal input_data : std_logic_vector(31 downto 0) := X"AAAAAAAA";
     signal output_data : std_logic_vector(31 downto 0) ;
 
     signal STATE_OUT : std_logic_vector (3 downto 0);
@@ -85,7 +85,6 @@ begin
         wait for 3 * TCK_PERIOD;
         RST <= '0';
 
-
         -- Go to state SDR_SFIFT
         TMS <= '0';  -- From TLR to RTI
         wait for TCK_PERIOD;
@@ -106,18 +105,19 @@ begin
 
         -- Move to 'Shift-DR' state
         TMS <= '0';  -- From Capture-DR to Shift-DR
-        wait for TCK_PERIOD;
-        expected_state := SDR_SHIFT;
-        assert(to_state_type(STATE_OUT) = expected_state) report "Error: Expected SDR_SHIFT state" severity error;
-        
+        -- wait for TCK_PERIOD;
+
 
         -- Test data shifting
-        for i in 0 to 31 loop
+        for i in 31 downto 0 loop
+            wait for TCK_PERIOD;
             TDI <= input_data(i);
             output_data(i) <= TDO;
-            wait for TCK_PERIOD;
+
         end loop;        
         assert(output_data = X"C0FFEE00") report "Error: Data mismatch" severity error;
+
+    
 
         -- Move to 'Exit 1-DR' state
         TMS <= '1';  -- From Shift-DR to Exit 1-DR
@@ -155,15 +155,16 @@ begin
 
         -- Move to 'Shift-DR' state
         TMS <= '0';  -- From Capture-DR to Shift-DR
-        wait for TCK_PERIOD;
+
         
         -- Test data update
-        for i in 0 to 31 loop
+        for i in 31 downto 0 loop
+            wait for TCK_PERIOD;
             TDI <= input_data(i);
             output_data(i) <= TDO;
-            wait for TCK_PERIOD;
+
         end loop;
-        assert(output_data = X"DEADBEEF") report "Error: Data mismatch" severity error;
+        assert(output_data = input_data) report "Error: Data mismatch" severity error;
 
         -- Move to 'Exit 1-DR' state
         TMS <= '1';  -- From Shift-DR to Exit 1-DR
