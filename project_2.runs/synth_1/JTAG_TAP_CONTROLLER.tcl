@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/conor/SOC1/project_2/project_2.runs/synth_1/JTAG_TAP_CONTROLLER.tcl"
+  variable script "E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1/JTAG_TAP_CONTROLLER.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,25 +56,21 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_param synth.incrementalSynthesisCache C:/Users/conor/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-28000-LAPTOP-77H5TI7T/incrSyn
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7k70tfbv676-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/conor/SOC1/project_2/project_2.cache/wt [current_project]
-set_property parent.project_path C:/Users/conor/SOC1/project_2/project_2.xpr [current_project]
+set_property webtalk.parent_dir E:/Documents/Engineering/SOC1/project_2/project_2.cache/wt [current_project]
+set_property parent.project_path E:/Documents/Engineering/SOC1/project_2/project_2.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
-set_property ip_output_repo c:/Users/conor/SOC1/project_2/project_2.cache/ip [current_project]
+set_property ip_output_repo e:/Documents/Engineering/SOC1/project_2/project_2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_vhdl -library xil_defaultlib C:/Users/conor/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd
+read_vhdl -library xil_defaultlib E:/Documents/Engineering/SOC1/project_2/project_2.srcs/sources_1/new/JTAG_TAP.vhd
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -86,7 +82,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental C:/Users/conor/SOC1/project_2/project_2.srcs/utils_1/imports/synth_1/JTAG_TAP_CONTROLLER.dcp
+read_checkpoint -auto_incremental -incremental E:/Documents/Engineering/SOC1/project_2/project_2.srcs/utils_1/imports/synth_1/JTAG_TAP_CONTROLLER.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

@@ -17,7 +17,7 @@ architecture behavior of tb_jtag_tap is
     signal TDI   : std_logic := '0';
     signal TDO   : std_logic;
     signal RST   : std_logic := '1';  -- Test reset
-    signal input_data : std_logic_vector(31 downto 0) := X"DEADBEEF";
+    signal input_data : std_logic_vector(31 downto 0) := X"AAAAAAAA";
     signal output_data : std_logic_vector(31 downto 0) := (others => '0');
 
     signal STATE_OUT : std_logic_vector (3 downto 0);
@@ -95,40 +95,47 @@ begin
         TMS <= '0'; wait for TCK_PERIOD; -- Capture-DR
         TMS <= '0'; wait for TCK_PERIOD; -- Shift-DR
         assert(to_state_type(STATE_OUT) = SDR_SHIFT) report "Error: Expected SDR_SHIFT state" severity error;
-
+        TDI <= input_data(31);
         -- Shift in test data
-        for i in 31 downto 0 loop
-            TDI <= input_data(i);
+        for i in 30 downto 0 loop
             wait for TCK_PERIOD / 2;  -- Wait for half clock cycle
-            output_data(i) <= TDO;    -- Capture TDO at the middle of the clock cycle
+            output_data <= output_data(30 downto 0) & TDO;    -- Capture TDO at the middle of the clock cycle
             wait for TCK_PERIOD / 2;  -- Wait for the other half clock cycle
+            TDI <= input_data(i);
         end loop;
+        
+        
 
         -- Exit Shift-DR
         TMS <= '1'; wait for TCK_PERIOD; -- Exit1-DR
+        output_data <= output_data(30 downto 0) & TDO; 
         TMS <= '1'; wait for TCK_PERIOD; -- Update-DR
         TMS <= '0'; wait for TCK_PERIOD; -- RTI
 
         -- Check output data
-        assert(output_data = X"C0FFEE00") report "Error: Unexpected output data " & to_hstring(output_data) severity error;
+        assert(output_data = X"C0FFEE00") report "Error: Unexpected output data " severity error;
 
         -- Go to Shift-DR state again
         TMS <= '1'; wait for TCK_PERIOD; -- Select-DR-Scan
         TMS <= '0'; wait for TCK_PERIOD; -- Capture-DR
         TMS <= '0'; wait for TCK_PERIOD; -- Shift-DR
 
-        -- Shift out the data and compare
-        for i in 31 downto 0 loop
+        TDI <= input_data(31);
+        -- Shift in test data
+        for i in 30 downto 0 loop
             wait for TCK_PERIOD / 2;  -- Wait for half clock cycle
-            output_data(i) <= TDO;    -- Capture TDO at the middle of the clock cycle
+            output_data <= output_data(30 downto 0) & TDO;    -- Capture TDO at the middle of the clock cycle
             wait for TCK_PERIOD / 2;  -- Wait for the other half clock cycle
+            TDI <= input_data(i);
         end loop;
 
+        TMS <= '1'; wait for TCK_PERIOD; -- Exit1-DR
+        output_data <= output_data(30 downto 0) & TDO; 
         -- Check if the shifted out data matches the input
-        assert(output_data = input_data) report "Error: Shifted out data doesn't match input " & to_hstring(output_data) severity error;
+        assert(output_data = input_data) report "Error: Shifted out data doesn't match input " severity error;
 
         -- End test
-        TMS <= '1'; wait for TCK_PERIOD; -- Exit1-DR
+
         TMS <= '1'; wait for TCK_PERIOD; -- Update-DR
         TMS <= '0'; wait for TCK_PERIOD; -- RTI
 

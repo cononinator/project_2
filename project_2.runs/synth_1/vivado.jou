@@ -3,22 +3,22 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Fri Oct 11 12:12:52 2024
-# Process ID: 26680
-# Current directory: C:/Users/conor/SOC1/project_2/project_2.runs/synth_1
+# Start of session at: Sun Oct 13 13:00:37 2024
+# Process ID: 26136
+# Current directory: E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1
 # Command line: vivado.exe -log JTAG_TAP_CONTROLLER.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source JTAG_TAP_CONTROLLER.tcl
-# Log file: C:/Users/conor/SOC1/project_2/project_2.runs/synth_1/JTAG_TAP_CONTROLLER.vds
-# Journal file: C:/Users/conor/SOC1/project_2/project_2.runs/synth_1\vivado.jou
-# Running On        :LAPTOP-77H5TI7T
+# Log file: E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1/JTAG_TAP_CONTROLLER.vds
+# Journal file: E:/Documents/Engineering/SOC1/project_2/project_2.runs/synth_1\vivado.jou
+# Running On        :DESKTOP-F05BUDQ
 # Platform          :Windows Server 2016 or Windows 10
-# Operating System  :22631
-# Processor Detail  :AMD Ryzen 5 3500U with Radeon Vega Mobile Gfx  
-# CPU Frequency     :2096 MHz
-# CPU Physical cores:4
-# CPU Logical cores :8
-# Host memory       :6387 MB
-# Swap memory       :15158 MB
-# Total Virtual     :21545 MB
-# Available Virtual :4945 MB
+# Operating System  :19045
+# Processor Detail  :AMD Ryzen 5 3600X 6-Core Processor             
+# CPU Frequency     :3793 MHz
+# CPU Physical cores:6
+# CPU Logical cores :12
+# Host memory       :34308 MB
+# Swap memory       :5100 MB
+# Total Virtual     :39408 MB
+# Available Virtual :25707 MB
 #-----------------------------------------------------------
 source JTAG_TAP_CONTROLLER.tcl -notrace
